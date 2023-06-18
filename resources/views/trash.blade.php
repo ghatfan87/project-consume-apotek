@@ -25,6 +25,11 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
             </ul>
+            <form action="" class="d-flex" role="search" method="GET" style="margin-left:800px">
+                @csrf
+                <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
         </div>
     </nav>
     <div class="container">

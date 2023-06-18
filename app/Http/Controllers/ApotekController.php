@@ -82,7 +82,7 @@ class ApotekController extends Controller
     {
         $data = (new BaseApi)->edit('/apoteks/'.$id);
         if($data->failed()){
-            dd($data);
+            // dd($data);
         $errors = $data->json('data');
         return redirect()->back()->with(['errors' => $errors]);
         }else {
@@ -139,9 +139,10 @@ class ApotekController extends Controller
     }
     }
 
-    public function trash()          
+    public function trash(Request $request)          
     {
-        $proses = (new BaseApi)->trash('/apoteks/show/trash');
+        $search = $request->search;
+        $proses = (new BaseApi)->trash('/apoteks/show/trash', ['search_apoteker' => $search]);
         if ($proses->failed()){
             $errors = $proses->json('data');
             return redirect()->back()->with(['errors' => $errors]);
